@@ -323,8 +323,10 @@ IB_DESIGNABLE
 
 - (void)refresh
 {
-    NSDate *now = [NSDate date];
-    [self setCurrentDate:now];
+    if (_currentDate == nil) {
+        NSDate *now = [NSDate date];
+        [self setCurrentDate:now];
+    }
     
     if (self.calendarIdentifier == NSCalendarIdentifierPersian) {
         [self generatePersianDayRects];
